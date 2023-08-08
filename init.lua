@@ -45,7 +45,16 @@ require('packer').startup(function(use)
 	use "terrortylor/nvim-comment",
 	use "CreaturePhil/vim-handmade-hero"
 	}
+
+	-- GIT
+	use { "lewis6991/gitsigns.nvim" }
+
+	-- SVELTE
+	use { "evanleck/vim-svelte" }
 end)
+
+-- GIT
+require('gitsigns').setup()
 
 -- TERMINAL SETUP
 require("toggleterm").setup{
