@@ -86,6 +86,14 @@ lsp.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set("n", "ca", function() vim.lsp.buf.code_action() end, opts)
+
+	local autocmd = vim.api.nvim_create_autocmd
+	autocmd('BufWritePost', {
+		callback = function(ev)
+			vim.lsp.buf.format()
+		end
+	})
 end)
 
 lsp.setup()
